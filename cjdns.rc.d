@@ -2,12 +2,7 @@
 
 # This script is licensed under the GPL2 and includes modified content from the GPL2 licensed /etc/rc.d/functions script that used to be included in Archlinux
 
-### 1. Location of the file containing user variables ###
-. /etc/conf.d/cjdns
-
-### 2. Modified selection from the now deprecated /etc/rc.d/functions ###
-. /etc/profile.d/locale.sh
-
+### Modified selection from the now deprecated /etc/rc.d/functions ###
 calc_columns () {
     STAT_COL=80
     if [[ ! -t 1 ]]; then
@@ -124,7 +119,7 @@ fi
 
 PREFIX_REG="::"
 
-### 3. CJDNS service ###
+### CJDNS service ###
 PID=$(get_pid $CJDROUTE)
 
 case "$1" in
