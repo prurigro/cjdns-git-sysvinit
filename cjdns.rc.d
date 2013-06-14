@@ -125,7 +125,7 @@ case "$1" in
 
         #START CJDNS AND ENABLE THE DAEMON IF IT SUCCEEDS
         if [ -z "$PID" ]; then
-            . cjdns.sh start &> /dev/null
+            cjdns.sh start &> /dev/null
             if [ $? -gt 0 ]; then
                 stat_busy "Unable to start the daemon"
                 stat_fail
@@ -141,7 +141,7 @@ case "$1" in
     ;;
     stop)
         stat_busy "Stopping cjdns"
-        . cjdns.sh stop
+        cjdns.sh stop
         if [ $? -gt 0 ]; then
             stat_busy "The daemon was not running"
             stat_fail
