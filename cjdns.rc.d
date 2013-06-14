@@ -80,11 +80,6 @@ status_stopped() {
     echo -ne "$C_OTHER[${C_STRT}STOPPED$C_OTHER]$C_CLEAR "
 }
 
-ck_status() {
-    stat_busy "The daemon is currently..."
-    ! [ -z "$1" ] && status_started || status_stopped
-}
-
 # Return PID of $1
 get_pid() {
     pidof -o %PPID $1 || return 1
@@ -120,18 +115,13 @@ fi
 PREFIX_REG="::"
 
 ### CJDNS service ###
+. /etc/default/cjdns
+
 PID=$(get_pid $CJDROUTE)
 
 case "$1" in
     start)
         stat_busy "Starting cjdns"
-
-        #FAIL IF THE CONFIG DOES NOT EXIST
-        if [ ! -f "$CONF" -o ! -s "$CONF" ]; then
-            stat_busy "$CONF is missing/empty: run 'cjdroute --genconf > $CONF' then configure it"
-            stat_fail
-            exit 1
-        fi
 
         #START CJDNS AND ENABLE THE DAEMON IF IT SUCCEEDS
         if [ -z "$PID" ]; then
@@ -165,7 +155,8 @@ case "$1" in
             $0 start
         ;;
     status)
-        ck_status "$PID"
+        stat_busy "The daemon is currently..."
+        if [ $(cjdns.sh status | grep -c not) = 0 ]; then status_started; else status_stopped; fi
         ;;
     *)
         echo "usage: $0 {start|stop|restart|status}"
