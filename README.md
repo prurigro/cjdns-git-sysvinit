@@ -1,4 +1,4 @@
-cjdns-git-sysvinit
+cjdns-git-sysvinit v1.1
 ========
 
 About: A sysvinit (rc.d/init.d) startup script for cjdns that should work with most unix-like operating systems
