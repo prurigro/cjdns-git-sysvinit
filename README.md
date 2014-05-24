@@ -1,13 +1,27 @@
-cjdns-git-sysvinit v1.1
-========
+# CJDNS System V Initscript #
 
-About: A sysvinit (rc.d/init.d) startup script for cjdns that should work with most unix-like operating systems
+## About ##
 
-Requirements:
-    1. The 'cjdns.sh' script from the cjdns scripts folder to be executable and located in $PATH
-    2. The 'cjdns' config file from the cjdns scripts folder to be configured and located @ /etc/default/cjdns
-    *The cjdns scripts folder is located in the cjdns repo, which can be cloned from: https://github.com/cjdelisle/cjdns
+A legacy system v initscript (rc.d/init.d) for cjdns that should work on most platforms.
 
-Usage:
-    1. Copy cjdns.rc.d to the sysvinit script location for your OS (usually /etc/rc.d or /etc/init.d)
-    2. You can now run the cjdns sysvinit script with the following usage: /etc/rc.d/cjdns {start|stop|restart|status}
+## Setup ##
+
+* **cjdns**: Copy to _'/etc/default/cjdns'_ and change any values needed to match your system configuration.
+* **cjdns.rc.d**: Copy to the sysvinit script location for your OS (usually _'/etc/rc.d'_ or _'/etc/init.d'_) named _'cjdns'_ (eg: _'/etc/rc.d/cjdns'_) and make it executable.
+* **cjdns.sh**: Copy to $PATH and make it executable.
+
+## Usage ##
+
+You can now run the cjdns sysvinit script with the following commands (assuming sysvinit directory _'/etc/rc.d'_):
+
+* /etc/rc.d/cjdns: Outputs the following information "usage: /etc/rc.d/cjdns {start|stop|restart|status}".
+* /etc/rc.d/cjdns **start**: Start cjdroute using the values given in _'/etc/default/cjdns'_.
+* /etc/rc.d/cjdns **stop**: Stop cjdroute.
+* /etc/rc.d/cjdns **restart**: Stop cjdroute, then start it again using the values given in _'/etc/default/cjdns'_.
+* /etc/rc.d/cjdns **status**: Displays whether or not cjdroute is currently running.
+
+## Credits ##
+
+* Written by prurigro: [GitHub Projects](https://github.com/prurigro) | [Arch Linux AUR Packages](https://aur.archlinux.org/packages/?SeB=m&K=prurigro)
+* Some parts of the _'cjdns.rc.d'_ script were taken from the initscripts functions script that used to be included in Archlinux.
+* The _'cjdns.sh'_ script was taken from the [cjdns repository](https://github.com/cjdelisle/cjdns), and was written by numerous authors including myself.

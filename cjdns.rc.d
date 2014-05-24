@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script is licensed under the GPL2 and includes modified content from the GPL2 licensed /etc/rc.d/functions script that used to be included in Archlinux
 
