@@ -7,7 +7,7 @@ A legacy system v initscript (rc.d/init.d) for cjdns that should work on most pl
 ## Setup ##
 
 * **cjdns**: Copy to _'/etc/default/cjdns'_ and change any values needed to match your system configuration.
-* **cjdns.rc.d**: Copy to the sysvinit script location for your OS (usually _'/etc/rc.d'_ or _'/etc/init.d'_) named _'cjdns'_ (eg: _'/etc/rc.d/cjdns'_) and make it executable.
+* **cjdns.rc.d**: Copy to your OS' system v initscript location (usually _'/etc/rc.d'_ or _'/etc/init.d'_) with the name _'cjdns'_ (ie: _'/etc/rc.d/cjdns'_) and make it executable.
 * **cjdns.sh**: Copy to $PATH and make it executable.
 
 ## Usage ##
