@@ -72,6 +72,7 @@ stop()
 start()
 {
     if [ -z "$PID" ]; then
+        [ -e "$CONF" ] || $CJDROUTE --genconf > $CONF
         $CJDROUTE < $CONF &>> $LOGTO
         if [ $? -gt 0 ]; then
             echo "Failed to start cjdns"
